@@ -1,5 +1,4 @@
 pandas
 sklearn
-deepforest
-imblearn.over_sampling
+imblearn
 deep-forest
