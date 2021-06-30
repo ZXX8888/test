@@ -17,13 +17,13 @@ SMOTE().fit_resample(x_train, y_train)
 LDA(n_components=8).fit_transform(x_train,y_train)
 df = pd.read_csv("test.csv")
 x_test = df.iloc[:, 1:] 
-model = CascadeForestClassifier(n_jobs=-1,use_predictor=True, n_estimators=3, n_trees=300,max_depth=12,
+model = CascadeForestClassifier(n_jobs=-1,use_predictor=True, n_estimators=3, n_trees=300,max_depth=15,
                                 min_samples_leaf=2)
 model.fit(x_train.values, y_train.values)
 y_pred = model.predict(x_test.values)
 proba = model.predict_proba(x_test.values)
 output = pd.DataFrame({'id': x_test.index, 'Class_1': proba[:,0], 'Class_2':proba[:,1], 'Class_3':proba[:,2], 'Class_4':proba[:,3], 'Class_5':proba[:,4], 'Class_6':proba[:,5], 'Class_7':proba[:,6], 'Class_8':proba[:,7], 'Class_9':proba[:,8]})
 output.to_csv('my_submission15.csv', index=False)
-df = pd.read_csv("F:\\homework\\机器学习\\竞赛大作业\\test.csv")
+df = pd.read_csv("test.csv")
 output = pd.DataFrame({'id': df['id'], 'Class_1': proba[:,0], 'Class_2':proba[:,1], 'Class_3':proba[:,2], 'Class_4':proba[:,3], 'Class_5':proba[:,4], 'Class_6':proba[:,5], 'Class_7':proba[:,6], 'Class_8':proba[:,7], 'Class_9':proba[:,8]})
 output.to_csv('my_submission15.csv', index=False)
